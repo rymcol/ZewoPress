@@ -1,12 +1,27 @@
+import Zewo
 import HTTPServer
 import Router
-import Mustache
+import Sideburns
 
 let app = Router { route in
     route.get("/") { request in
-        return Response(body: "Hello, world!")
-        // return try app.view("index.mustache", context: IndexHandler().gatherContent())
+        //
+
+        let templateData: TemplateData = [
+            "content": "bar"
+        ]
+
+        let response: Response
+
+        do {
+            return try Response(templatePath: "webroot/index.mustache", templateData: templateData)
+        } catch {
+            return Response(body: "Mustache Failed")
+        }
     }
+
+    //serves static files
+    route.get("/*", responder: FileResponder(path: "webroot/"))
 }
 
 try Server(app).start()
