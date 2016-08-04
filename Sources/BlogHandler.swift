@@ -14,16 +14,17 @@ struct BlogHandler {
 
         let randomContent = ContentGenerator().generate()
 
-        let index: Int = Int(arc4random_uniform(UInt32(randomContent.count)))
-        let randomVal = Array(randomContent.values)[index]
+        var content = [[String: Any]]()
 
-        let imageNumber = Int(arc4random_uniform(25) + 1)
+        for _ in 1...5 {
+            let index: Int = Int(arc4random_uniform(UInt32(randomContent.count)))
+            let value = Array(randomContent.values)[index]
+            let imageNumber = Int(arc4random_uniform(25) + 1)
+            content.append(["postTitle": "Test Post \(index)", "content": value, "featuredImageURI": "/img/random/random-\(imageNumber).jpg", "featuredImageAltText": "Demo Image \(imageNumber)"])
+        }
 
         return [
-            "content": "\(randomVal)",
-            "postTitle": "Test Post \(index)",
-            "featuredImageURI": "/img/random/random-\(imageNumber).jpg",
-            "featuredImageAltText": "Demo Image \(imageNumber)",
+            "content": content,
         ]
     }
 
