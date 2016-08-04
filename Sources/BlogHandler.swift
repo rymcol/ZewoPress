@@ -8,7 +8,7 @@ import Glibc
 import Darwin
 #endif
 
-struct IndexHandler {
+struct BlogHandler {
 
     func gatherContent() -> [String: Any] {
 
