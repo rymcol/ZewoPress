@@ -30,4 +30,4 @@ let app = Router { route in
     route.get("/*", responder: FileResponder(path: "webroot/"))
 }
 
-try Server(app).start()
+try HTTPServer.Server(host: "0.0.0.0", port: 8282, responder: app).start()

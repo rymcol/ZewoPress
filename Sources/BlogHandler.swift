@@ -25,6 +25,7 @@ struct BlogHandler {
 
         return [
             "content": content,
+            "title": "ZewoPress | Blog"
         ]
     }
 

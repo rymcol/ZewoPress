@@ -21,6 +21,7 @@ struct IndexHandler {
             "postTitle": "Test Post 1",
             "featuredImageURI": "/img/random/random-\(imageNumber).jpg",
             "featuredImageAltText": "Demo Image \(imageNumber)",
+            "title": "ZewoPress | Home",
         ]
     }
 
