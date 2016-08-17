@@ -2,7 +2,7 @@
 A blog framework for benchmarking Zewo
 
 ## Notice
-This repository is designed to house a very specific blog using Perfect Server and is for the purpose of benchmarking. 
+This repository is designed to house a very specific blog using Zewo and is for the purpose of benchmarking. 
 
 Pull requests and issues to this repo will be ignored
 
