@@ -10,11 +10,7 @@ let app = Router { route in
         let body = IndexHandler().loadPageContent()
         let indexPage = header + body + footer
 
-        do {
-            return Response(body: indexPage)
-        } catch {
-            return Response(body: "Page Load Failed")
-        }
+        return try Response(body: indexPage)
     }
 
     route.get("blog") { request in
@@ -24,11 +20,7 @@ let app = Router { route in
         let body = BlogHandler().loadPageContent()
         let blogPage = header + body + footer
 
-        do {
-            return Response(body: blogPage)
-        } catch {
-            return Response(body: "Page Load Failed")
-        }
+        return Response(body: blogPage)
     }
 
     //serves static files
