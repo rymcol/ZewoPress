@@ -1,28 +1,33 @@
 import Zewo
 import HTTPServer
 import Router
-import Sideburns
 
 let app = Router { route in
     route.get("/") { request in
 
-        let response: Response
+        let header = CommonHandler().getHeader()
+        let footer = CommonHandler().getFooter()
+        let body = IndexHandler().loadPageContent()
+        let indexPage = header + body + footer
 
         do {
-            return try Response(templatePath: "webroot/index.mustache", templateData: IndexHandler().gatherContent())
+            return Response(body: indexPage)
         } catch {
-            return Response(body: "Mustache Failed")
+            return Response(body: "Page Load Failed")
         }
     }
 
     route.get("blog") { request in
 
-        let response: Response
+        let header = CommonHandler().getHeader()
+        let footer = CommonHandler().getFooter()
+        let body = BlogHandler().loadPageContent()
+        let blogPage = header + body + footer
 
         do {
-            return try Response(templatePath: "webroot/blog.mustache", templateData: BlogHandler().gatherContent())
+            return Response(body: blogPage)
         } catch {
-            return Response(body: "Mustache Failed")
+            return Response(body: "Page Load Failed")
         }
     }
 
