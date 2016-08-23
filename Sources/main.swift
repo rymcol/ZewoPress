@@ -24,7 +24,7 @@ let app = Router { route in
     }
 
     //serves static files
-    route.get("/*", responder: FileResponder(path: "webroot/"))
+    route.get("/*", responder: ThreadedFileResponder(path: "webroot/"))
 }
 
 try HTTPServer.Server(host: "0.0.0.0", port: 8282, responder: app).start()
