@@ -1,6 +1,14 @@
 import Zewo
 import HTTPServer
 import Router
+import JSON
+
+
+#if os(Linux)
+public func arc4random_uniform(_ max: UInt32) -> Int {
+    return Int(random() % Int(max + 1))
+}
+#endif
 
 let app = Router { route in
     route.get("/") { request in
@@ -10,7 +18,7 @@ let app = Router { route in
         let body = IndexHandler().loadPageContent()
         let indexPage = header + body + footer
 
-        return try Response(body: indexPage)
+        return Response(body: indexPage)
     }
 
     route.get("blog") { request in
@@ -21,6 +29,13 @@ let app = Router { route in
         let blogPage = header + body + footer
 
         return Response(body: blogPage)
+    }
+
+    route.get("json") { request in
+
+        let jsonString = JSON(JSONCreator().generateJSON())
+
+        return Response(body: "\(jsonString)")
     }
 
     //serves static files
